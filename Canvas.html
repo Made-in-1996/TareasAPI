@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+    <link rel="stylesheet" href="css/main.css">
+    <ul class="header-nav__list">
+    <h2 align="center"> API CANVAS </h2>
+    <script type="text/javascript">
+
+        function dibujar() {
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+            ctx.fillStyle = "rgb(50,0,0)";
+            ctx.fillRect (30, 100, 350, 200);
+            ctx.fillStyle = "rgba(0, 2, 000, 0.5)";
+            ctx.fillRect (30, 30, 55, 350);
+
+        }
+    </script>
+    </ul>
+</head>
+<body onload="dibujar();">
+<canvas id="canvas" width="200" height="400" style="border-style:solid;">
+</canvas>
+</body>
+</html>

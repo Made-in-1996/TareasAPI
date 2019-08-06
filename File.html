@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File</title>
+    <link rel="stylesheet" href="css/main.css">
+    <ul class="header-nav__list">
+        <h2 align="center"> API File </h2>
+    <script>
+        function readFiles(event) {
+            var fileList = event.target.files;
+
+            for(var i=0; i < fileList.length; i++ ) {
+                loadAsText(fileList[i]);
+            }
+        }
+
+        function loadAsText(theFile) {
+            var reader = new FileReader();
+
+            reader.onload = function(loadedEvent) {
+            }
+            reader.readAsText(theFile);
+        }
+    </script>
+
+        <style>
+            div{
+                font-size: 1.5em; padding: 20px; border-width: 9px; border-style: solid; border-color: dimgrey;
+            }
+        </style>
+    </ul>
+</head>
+<body>
+<div id="fileDropZone" >
+    <input type="file" onchange="readFiles(event)" multiple>
+</div>
+</body>
+</html>

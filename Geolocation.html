@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Geolocation</title>
+    <link rel="stylesheet" href="css/main.css">
+
+    <ul class="header-nav__list">
+        <h2 align="center"> API Geolocation </h2>
+    <script>
+        var a = document.getElementById("demo");
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                a.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            a.innerHTML = "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+        }
+    </script>
+    </ul>
+</head>
+<body>
+<h3>Da click en boton para obtener tus coordenadas.</h3>
+<button onclick="getLocation()" class="btn btn-primary"> Mostrar </button>
+<p id="demo"></p>
+</body>
+</html>

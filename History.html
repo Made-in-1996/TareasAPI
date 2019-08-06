@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>History</title>
+    <link rel="stylesheet" href="css/main.css">
+    <ul class="header-nav__list">
+        <h2 align="center"> API History </h2>
+        <script type="text/javascript">
+            jQuery('document').ready(function(){
+
+                jQuery('.historyAPI').on('click', function(e){
+                    e.preventDefault();
+                    var href = $(this).attr('href');
+
+                    getContent(href, true);
+
+                    jQuery('.historyAPI').removeClass('active');
+                    $(this).addClass('active');
+                });
+
+            });
+
+            window.addEventListener("popstate", function(e) {
+
+                getContent(location.pathname, false);
+            });
+
+            function getContent(url, addEntry) {
+                $.get(url)
+                    .done(function( data ) {
+
+                        $('#contentHolder').html(data);
+
+                        if(addEntry == true) {
+                            history.pushState(null, null, url);
+                        }
+
+                    });
+            }
+        </script>
+    </ul>
+</head>
+<body>
+<div class="container" >
+    <div class="row">
+        <ul class="nav navbar-nav" >
+            <li><a href="inicio.html" class="historyAPI">Inicio</a></li>
+            <li><a href="acercade.html" class="historyAPI">Acerca de</a></li>
+            <li><a href="contacto.html" class="historyAPI">Contacto</a></li>
+        </ul>
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="well">
+                    Click en los enlaces de arriba para ver el uso de API de Historial usando el metodo <code>pushState</code>
+                </h3>
+            </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Workers</title>
+    <link rel="stylesheet" href="css/main.css">
+    <ul class="header-nav__list">
+        <h2 align="center"> API Web Workers </h2>
+    <script>
+        function sayHI() {
+            worker.postMessage({'cmd': 'start', 'msg': 'Hi'});
+        }
+
+        function stop() {
+            worker.postMessage({'cmd': 'stop', 'msg': 'Bye'});
+        }
+
+        function unknownCmd() {
+            worker.postMessage({'cmd': 'foobard', 'msg': '???'});
+        }
+
+        var worker = new Worker('doWork.js');
+
+        worker.addEventListener('message', function(e) {
+            document.getElementById('result').textContent = e.data;
+        }, false);
+    </script>
+    </ul>
+</head>
+<body>
+<button onclick="sayHI()">Di hola</button>
+<button onclick="unknownCmd()">Enviar un comando desconocido</button>
+<button onclick="stop()">Detener worker</button>
+<output id="result"></output>
+</body>
+</html>

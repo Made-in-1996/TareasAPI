@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drag and Drop</title>
+    <link rel="stylesheet" href="css/main.css">
+    <ul class="header-nav__list">
+        <h2 align="center"> API Drag and Drop </h2>
+
+<style>
+    #div1 {
+        width: 350px;
+        height: 70px;
+        padding: 10px;
+        border: 1px solid #ffd1d2;
+
+    }
+    #div3, #div2 {
+        float: left;
+        width: 100px;
+        height: 35px;
+        margin: 10px;
+        padding: 10px;
+        border: 1px crimson;
+    }
+</style>
+    </ul>
+<script>
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        let data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+</script>
+</head>
+<body>
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<br>
+
+<img id="drag1" src="https://umg.edu.gt/50/img/logo-color.png" draggable="true" ondragstart="drag(event)" width="336" height="69">
+
+<div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</body>
+</html>
